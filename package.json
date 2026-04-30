@@ -1,11 +1,12 @@
 {
-  "name": "vercel-xhttp-relay",
+  "name": "railway-xhttp-relay",
   "version": "1.1.0",
-  "description": "Serverless XHTTP relay for Xray/V2Ray on Vercel (Node.js runtime, 128MB memory)",
+  "description": "Serverless XHTTP relay for Xray/V2Ray on Railway (Node.js runtime)",
   "private": true,
+  "license": "MIT",
   "type": "module",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js"
-  },
-  "license": "MIT"
+  }
 }
