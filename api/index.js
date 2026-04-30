@@ -1,11 +1,6 @@
 import { Readable } from "node:stream";
 import { pipeline } from "node:stream/promises";
 
-export const config = {
-  api: { bodyParser: false },
-  supportsResponseStreaming: true,
-  maxDuration: 60,
-};
 
 const TARGET_BASE = (process.env.TARGET_DOMAIN || "").replace(/\/$/, "");
 
@@ -40,7 +35,7 @@ export default async function handler(req, res) {
       const k = key.toLowerCase();
       const v = req.headers[key];
       if (STRIP_HEADERS.has(k)) continue;
-      if (k.startsWith("x-vercel-")) continue;
+      if (k.startsWith("x-railway-") || k.startsWith("x-vercel-")) continue;
       if (k === "x-real-ip") { clientIp = v; continue; }
       if (k === "x-forwarded-for") { if (!clientIp) clientIp = v; continue; }
       headers[k] = Array.isArray(v) ? v.join(", ") : v;
